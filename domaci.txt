@@ -1,0 +1,13 @@
+Napravite sledeće komponente u posebne fajlove:
+
+Header.jsx – treba da sadrži naslov (npr. "Dobrodošli na moju stranicu").
+About.jsx – treba da sadrži tekst sa kratkim opisom vas (par rečenica).
+Hobbies.jsx – neka prikazuje listu vaših hobija u <ul><li></li></ul> formatu.
+Footer.jsx – neka sadrži poruku tipa "© 2025 Moje ime".
+
+U App.jsx importujte sve komponente i poređajte ih ovim redom:
+
+Header
+About
+Hobbies
+Footer

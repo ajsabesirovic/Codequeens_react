@@ -1,0 +1,18 @@
+package.json
+
+Sadrži osnovne informacije o projektu (ime, verzija, itd)
+Čuva spisak zavisnosti (paketi koje projekat koristi)
+Sadrži skripte za pokretanje projekta (npm run dev, npm run build)
+
+node_modules/ – automatski se kreira, sadrži sve instalirane pakete i biblioteke
+
+public/ – folder za statičke fajlove (slike, ikone, index.html). Ovi fajlovi se direktno učitavaju bez obrade
+
+src/ – glavni folder gde pišemo kod aplikacije, tu cuvamo komponente
+
+main.jsx – ulazna tačka aplikacije. Odatle se React povezuje sa HTML fajlom
+
+App.jsx – glavna komponenta aplikacije. Obično služi kao početna tačka gde se ubacuju sve ostale komponente
+
+index.css – glavni stilovi projekta
+
