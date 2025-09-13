@@ -1,13 +1,31 @@
-Napravite sledeće komponente u posebne fajlove:
+U App.jsx napravite niz sa hobijima, na primer:
+const hobbies = ["Čitanje", "Ples", "Planinarenje", "Programiranje"];
+Prikažite sve hobije pomoću .map() u obliku <li> liste.
 
-Header.jsx – treba da sadrži naslov (npr. "Dobrodošli na moju stranicu").
-About.jsx – treba da sadrži tekst sa kratkim opisom vas (par rečenica).
-Hobbies.jsx – neka prikazuje listu vaših hobija u <ul><li></li></ul> formatu.
-Footer.jsx – neka sadrži poruku tipa "© 2025 Moje ime".
+Napravite novu komponentu ProductCard.jsx.
+Komponenta treba da prima sledeće props:
+title (naziv proizvoda)
+price (cena proizvoda)
+inStock (boolean vrednost – true ili false)
 
-U App.jsx importujte sve komponente i poređajte ih ovim redom:
+Prikažite unutar <div> elementa:
+naslov u <h2> tagu,
+cenu u <p> tagu,
+i tekst "Na stanju" ili "Nema na stanju" u zavisnosti od vrednosti inStock.
 
-Header
-About
-Hobbies
-Footer
+U App.jsx fajlu napravite niz proizvoda (barem 3 proizvoda). Svaki proizvod treba da ima svoj id, title, price i inStock.
+Primer:
+
+const products = [
+  { id: 1, title: "Laptop", price: 1200, inStock: true },
+  { id: 2, title: "Telefon", price: 600, inStock: false },
+  { id: 3, title: "Slusalice", price: 100, inStock: true },
+];
+
+Pomoću .map() funkcije prikažite ProductCard za svaki element niza.
+Prosledite podatke kao atribute (props).
+
+U ProductCard komponenti ubacite console.log(props) da vidite u konzoli kako izgledaju prosleđeni podaci.
+Napravite jedan ProductCard ručno (bez mape), sa proizvoljnim vrednostima za props, i uporedite rezultat sa onim što generiše .map().
+
+Napravite dodatnu komponentu UserList.jsx koja prima jedan props: users (niz korisnika).
