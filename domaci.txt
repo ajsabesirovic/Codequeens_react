@@ -1,31 +1,41 @@
-U App.jsx napravite niz sa hobijima, na primer:
-const hobbies = ["Čitanje", "Ples", "Planinarenje", "Programiranje"];
-Prikažite sve hobije pomoću .map() u obliku <li> liste.
+Zadatak 1
 
-Napravite novu komponentu ProductCard.jsx.
-Komponenta treba da prima sledeće props:
-title (naziv proizvoda)
-price (cena proizvoda)
-inStock (boolean vrednost – true ili false)
+Napravite komponentu UserList koja prima niz korisnika kroz props.
+Ako je niz prazan → prikažite poruku „Nema korisnika u listi“.
+Ako niz ima korisnike → prikažite listu (<ul>) i za svakog korisnika ispišite ime i da li je „punoletan“ ili „maloletan“ u zavisnosti od godina.
 
-Prikažite unutar <div> elementa:
-naslov u <h2> tagu,
-cenu u <p> tagu,
-i tekst "Na stanju" ili "Nema na stanju" u zavisnosti od vrednosti inStock.
+Zadatak 2
 
-U App.jsx fajlu napravite niz proizvoda (barem 3 proizvoda). Svaki proizvod treba da ima svoj id, title, price i inStock.
-Primer:
+Napravite komponentu StatusMessage koja prima props status.
+Ako je status "loading" → prikažite tekst „Učitavanje…“.
+Ako je status "error" → prikažite tekst „Došlo je do greške“ crvenom bojom.
+Ako je status "success" → prikažite tekst „Uspešno učitano“ zelenom bojom.
+Ako status nije ni jedno od ovih → prikažite poruku „Nepoznat status“.
 
-const products = [
-  { id: 1, title: "Laptop", price: 1200, inStock: true },
-  { id: 2, title: "Telefon", price: 600, inStock: false },
-  { id: 3, title: "Slusalice", price: 100, inStock: true },
-];
+Zadatak 3 
 
-Pomoću .map() funkcije prikažite ProductCard za svaki element niza.
-Prosledite podatke kao atribute (props).
+Napravite komponentu ShippingInfo koja prima props isMember i totalPrice.
+Ako je korisnik član i ukupna cena je veća od 500 → prikažite poruku „Besplatna dostava“.
+U svim ostalim slučajevima → prikažite poruku „Dostava se plaća 300 dinara“.
 
-U ProductCard komponenti ubacite console.log(props) da vidite u konzoli kako izgledaju prosleđeni podaci.
-Napravite jedan ProductCard ručno (bez mape), sa proizvoljnim vrednostima za props, i uporedite rezultat sa onim što generiše .map().
+Zadatak 4
 
-Napravite dodatnu komponentu UserList.jsx koja prima jedan props: users (niz korisnika).
+Napravite komponentu Notification koja prima props type i message.
+Ako je tip "error" → prikažite poruku u crvenoj boji.
+Ako je tip "warning" → prikažite poruku u narandžastoj boji.
+Ako je tip "info" → prikažite poruku u plavoj boji.
+Ako tip nije nijedan od ovih → prikažite „Nepoznata poruka“.
+
+Zadatak 5 
+
+Napravite komponentu ProfileCard koja prima ime, godine i niz hobija.
+Ako korisnik nema hobije → prikažite tekst „Nema hobija“.
+Ako korisnik ima više od 3 hobija → prikažite tekst „Previše hobija“ umesto liste.
+Ako je korisnik stariji od 30 godina → prikažite dodatnu poruku „Iskusan korisnik“.
+
+Zadatak 6
+
+Napravite komponentu ShoppingCart koja prima niz proizvoda sa cenama.
+Ako je korpa prazna → prikažite tekst „Korpa je prazna“.
+Ako je ukupan iznos veći od 2000 → prikažite tekst „Imaš pravo na besplatnu dostavu“.
+U suprotnom → prikažite listu proizvoda sa njihovim nazivom i cenom.

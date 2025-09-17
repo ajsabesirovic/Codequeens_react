@@ -1,44 +1,41 @@
 import "./App.css";
 import Header from "./Header.jsx";
 import Message from "./Message.jsx";
+import ProductCard from "./ProductCard.jsx";
 import UserCard from "./UserCard.jsx";
 
 function App() {
-  const users = [
-    { id: 1, name: "ajsa", age: 21 },
-    { id: 2, name: "jana", age: 20 },
+  const isLoggedIn = true;
+  const products = [
+    { id: 1, title: "Laptop", price: 1200, inStock: true },
+    { id: 2, title: "Telefon", price: 600, inStock: false },
+    { id: 3, title: "Slusalice", price: 100, inStock: true },
   ];
 
-  // Ovde za svakog korisnika iz niza users kreiramo UserCard komponentu
-  // i šaljemo joj podatke kao ATRIBUTE (name i age)
-  // Npr. <UserCard name="ajsa" age={21} />
-  const content = users.map((user) => (
-    <UserCard name={user.name} age={user.age} />
-  ));
+  // const content2 = isLoggedIn ? <Dashboard /> : <LoginForm />;
 
   return (
     <>
-      <Header />
-      <Message />
-
-      {/* Primer: prikazujemo listu UserCard komponenti */}
-      {users.map((user, index) => (
-        <UserCard name={user.name} age={user.age} key={index} />
+      <ProductCard title="asf" price="12" inStock={false} />
+      {products.map((product) => (
+        <ProductCard
+          key={product.id}
+          title={product.title}
+          price={product.price}
+          inStock={product.inStock}
+        />
       ))}
 
-      {/* Napomena o key-u:
-         - Key je obavezan kada renderujemo listu elemenata.
-         - Ako lista nikada ne menja svoj sadržaj, može se koristiti index.
-         - Ako lista može da se menja (dodavanje, brisanje), bolje je koristiti jedinstveni ID. 
-      */}
+      {/* Conditional rendering - možemo menjati prikaz na osnovu vrednosti koje dobijamo */}
 
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.name}</li>
-          // Ovde koristimo "id" jer je jedinstven za svakog korisnika.
-          // React tada može da prati elemente na ispravan način.
-        ))}
-      </ul>
+      {/* {isLoggedIn && <p>Ulogovan</p>} */}
+      {/* 
+
+      // Ako je isLoggedIn == true prikazacemo Dashboard, ako je false LoginForm (samo primeri naziva komponenti, nismo ih pravile)
+      {isLoggedIn ? <Dashboard /> : <LoginForm />}
+
+      // Content2 ce isto biti ili Dashboard ili LoginForm 
+      {content2} */}
     </>
   );
 }
