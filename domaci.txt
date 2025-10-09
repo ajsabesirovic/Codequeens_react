@@ -1,12 +1,7 @@
-Napravi komponentu koja:
-ima state hobbies koji je niz (npr. ["reading", "gaming"]),
-ima input polje i dugme,
-kada korisnik upiše novi hobi i klikne dugme, 
-taj hobi se doda u niz i prikaže na ekranu.
+Napravite select sa opcijama (“posts”, “users”, “comments”).
+Kada se promeni selekcija, useEffect treba da pozove odgovarajući endpoint API-ja (https://jsonplaceholder.typicode.com/${selected}) i prikaže podatke.
 
-Dodaj validaciju:
-ako je input prazan, ne sme da se doda hobi,
-možeš da prikažeš poruku tipa "Please enter a hobby".
+Napravite brojač koji se automatski povećava svake sekunde dok je aktivan (isRunning = true).
+Koristite dugmad “Start” i “Stop”.
+Implementirajte useEffect koji upravlja intervalom i prekida ga kad se isRunning promeni.
 
-Izmeni kod tako da ne može dva puta da se doda isti hobi. 
-Ako korisnik pokuša, prikaži poruku "That hobby already exists!".
