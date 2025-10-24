@@ -5,3 +5,69 @@ Napravite brojač koji se automatski povećava svake sekunde dok je aktivan (isR
 Koristite dugmad “Start” i “Stop”.
 Implementirajte useEffect koji upravlja intervalom i prekida ga kad se isRunning promeni.
 
+🟢 1. Timer koji se gasi
+
+Zadatak:
+Napravi komponentu Timer koja broji sekunde pomoću setInterval().
+Kada se komponenta ukloni (npr. sakrije klikom na dugme), tajmer mora da prestane da radi.
+
+💡 Hint: koristi clearInterval() u cleanup-u.
+
+🟢 2. Brojanje pritisaka na taster
+
+Zadatak:
+Kreiraj komponentu koja broji koliko puta je korisnik pritisnuo bilo koji taster na tastaturi.
+Ukloni event listener u cleanup-u.
+
+💡 Hint:
+
+window.addEventListener("keydown", handleKey)
+window.removeEventListener("keydown", handleKey)
+
+🟢 3. Promena pozadine na osnovu miša
+
+Zadatak:
+Dodaj event listener za mousemove koji menja boju pozadine stranice u zavisnosti od pozicije miša.
+Kada se komponenta isključi, boja se treba vratiti na belu, a listener se uklanja.
+
+🟠 4. Cleanup prilikom promene teme
+
+Zadatak:
+Napravi komponentu sa dugmadima “light mode” i “dark mode”.
+U useEffect, kad se tema promeni, neka se u konzoli ispiše nova tema, a pre promene neka se ispiše poruka iz cleanup-a za staru temu.
+
+📖 Primer izlaza u konzoli:
+
+Cleanup: uklanjam dark mode
+Efekat pokrenut za light mode
+
+🟠 5. Interval koji se ponovo pokreće
+
+Zadatak:
+Kreiraj komponentu u kojoj korisnik može da promeni brzinu tajmera (npr. svakih 500ms, 1000ms ili 2000ms).
+Efekat treba da se ponovo pokreće pri svakoj promeni brzine — stari interval se mora očistiti pre novog.
+
+💡 Hint: koristi useEffect(() => {...}, [speed])
+
+🟠 6. Simulacija API poziva
+
+Zadatak:
+Napravi komponentu koja simulira poziv API-ja pomoću setTimeout() koji traje 3 sekunde.
+Ako se komponenta ukloni pre nego što tajmer istekne, taj setTimeout treba očistiti.
+
+💡 Hint: koristi clearTimeout() u cleanup-u.
+
+🔵 7. Kombinovani zadatak — vidljivo/nevidljivo
+
+Zadatak:
+Napravi glavni App sa dugmetom “Prikaži/Sakrij” koje prikazuje ili uklanja neku drugu komponentu (MouseTracker ili Timer).
+U konzoli treba jasno da se vidi kada se dodaje i uklanja efekat.
+
+💡 Ovo je savršen zadatak za demonstraciju mount/unmount ciklusa.
+
+🔵 8. Cleanup prilikom promene korisnika
+
+Zadatak:
+Zamisli da imaš korisnike (npr. “Ana”, “Marko”, “Sara”).
+Kada se promeni korisnik, useEffect treba da pokrene efekat (npr. “Učitavam podatke za Anu”),
+a cleanup da ispiše (“Čistim podatke za Marka”).

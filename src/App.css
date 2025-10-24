@@ -1,42 +1,504 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Reset i osnovni stilovi */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+  color: #262626;
+}
+
+.app {
+  width: 100%;
+  background-color: white;
+  min-height: 100vh;
+}
+
+/* Header stilovi */
+.app-header {
+  background-color: white;
+  border-bottom: 1px solid #dbdbdb;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-buttons button {
+  background-color: transparent;
+  color: #8e8e8e;
+  border: 1px solid #dbdbdb;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-buttons button:hover {
+  background-color: #fafafa;
+  color: #262626;
+}
+
+.nav-buttons button.active {
+  background-color: #0095f6;
+  color: white;
+  border-color: #0095f6;
+}
+
+.back-button {
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #1877f2;
+}
+
+/* Loading i error stilovi */
+.loading, .error {
   text-align: center;
+  padding: 40px 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.loading h2, .error h2 {
+  margin-bottom: 16px;
+  color: #8e8e8e;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #0095f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error button {
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+/* Post Feed stilovi */
+.post-feed {
+  padding: 0;
+}
+
+.post-feed h2 {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #262626;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Post Card stilovi */
+.post-card {
+  border-bottom: 1px solid #dbdbdb;
+  padding: 0;
+}
+
+.post-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #262626;
+  cursor: pointer;
+  margin: 0;
+}
+
+.username:hover {
+  color: #0095f6;
+}
+
+.user-email {
+  font-size: 12px;
+  color: #8e8e8e;
+  margin: 0;
+}
+
+.post-content {
+  padding: 0 20px 16px;
+}
+
+.post-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.post-body {
+  font-size: 14px;
+  color: #262626;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Comments stilovi */
+.comments-section {
+  padding: 0 20px 20px;
+}
+
+.comments-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #8e8e8e;
+  margin-bottom: 12px;
+}
+
+.comments-list {
+  margin-bottom: 12px;
+}
+
+.comment {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.comment:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.comment-header {
+  margin-bottom: 4px;
+}
+
+.comment-author {
+  font-size: 13px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.comment-email {
+  font-size: 12px;
+  color: #8e8e8e;
+  margin-left: 8px;
+}
+
+.comment-body {
+  font-size: 13px;
+  color: #262626;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.no-comments {
+  font-size: 14px;
+  color: #8e8e8e;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.comments-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.load-more-btn, .hide-comments-btn {
+  background-color: transparent;
+  color: #0095f6;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.load-more-btn:hover, .hide-comments-btn:hover {
+  color: #1877f2;
+}
+
+/* User Profile stilovi */
+.user-profile {
+  padding: 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 32px;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 4px;
+}
+
+.profile-username {
+  font-size: 16px;
+  color: #8e8e8e;
+  margin-bottom: 8px;
+}
+
+.profile-email, .profile-phone {
+  font-size: 14px;
+  color: #262626;
+  margin-bottom: 4px;
+}
+
+.profile-website a {
+  font-size: 14px;
+  color: #0095f6;
+  text-decoration: none;
+}
+
+.profile-website a:hover {
+  text-decoration: underline;
+}
+
+.profile-address, .profile-company {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 8px;
+}
+
+.profile-address h3, .profile-company h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 8px;
+}
+
+.profile-address p, .profile-company p {
+  font-size: 14px;
+  color: #262626;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.user-posts {
+  margin-top: 30px;
+}
+
+.user-posts h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 20px;
+}
+
+.posts-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.user-post-card {
+  padding: 16px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #dbdbdb;
+}
+
+.user-post-card .post-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 8px;
+}
+
+.user-post-card .post-body {
+  font-size: 14px;
+  color: #262626;
+  line-height: 1.5;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app {
+    max-width: 100%;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Cleanup Examples Styles */
+.cleanup-examples {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.card {
-  padding: 2em;
+.example-controls {
+  margin-bottom: 20px;
 }
 
-.read-the-docs {
-  color: #888;
+.example-controls button {
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.example-controls button:hover {
+  background-color: #1877f2;
+}
+
+.example-box {
+  background-color: #fafafa;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.2s;
+}
+
+.example-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.example-box h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 12px;
+}
+
+.example-box p {
+  font-size: 14px;
+  color: #262626;
+  margin-bottom: 8px;
+}
+
+.example-note {
+  font-size: 13px;
+  color: #8e8e8e;
+  font-style: italic;
+  margin-top: 8px;
+  padding: 8px;
+  background-color: white;
+  border-left: 3px solid #0095f6;
+}
+
+.example-box button {
+  background-color: white;
+  color: #0095f6;
+  border: 1px solid #0095f6;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.example-box button:hover {
+  background-color: #f0f8ff;
 }
