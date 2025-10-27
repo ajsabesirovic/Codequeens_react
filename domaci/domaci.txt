@@ -1,0 +1,35 @@
+Zadatak:
+Napravi Instagram-like feed aplikaciju koja prikazuje postove, korisnike i komentare iz https://jsonplaceholder.typicode.com/
+
+Zahteva:
+1. Pristaviti podatke (posts, users, comments) sa API-ja koristeći useEffect
+2. Prikazati postove kao Instagram feed sa:
+   - Informacijama o korisniku koji je objavio post
+   - Naslovom i sadržajem posta
+   - 3 komentara po postu (na početku)
+   - Dugme "Load More Comments" koje prikazuje više komentara
+3. Klikom na korisnika, navigacija na njegov profil gde se prikazuje:
+   - Detalji korisnika (ime, email, telefon, adresa, kompanija)
+   - Svi postovi tog korisnika
+4. Implementirati cleanup funkcije:
+   - Cleanup za fetch podatke (otkazivanje API poziva ako dođe do promene)
+   - Cleanup za event listenere ako ih koristiš
+
+Tehnički zahtevi:
+- Koristi useState za upravljanje stanjem (posts, users, comments, loading, error)
+- Koristi useEffect za fetchovanje podataka
+- Implementiraj cleanup funkcije gde je potrebno
+- Dodaj loading state i error handling
+- Stilizuj slično Instagram-u (kao primer koji smo radili)
+
+Bonus:
+- Dodaj "Back to Feed" dugme koje vraća na glavni feed
+- Implementiraj pretragu postova po sadržaju
+- Dodaj dark/light mode temu
+
+Primer strukture komponenti:
+- App.jsx (glavna navigacija)
+- PostFeed.jsx (prikaz svih postova)
+- PostCard.jsx (jedan post sa komentarima)
+- UserProfile.jsx (profil korisnika)
+
