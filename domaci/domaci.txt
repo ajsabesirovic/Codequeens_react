@@ -1,35 +1,63 @@
 Zadatak:
-Napravi Instagram-like feed aplikaciju koja prikazuje postove, korisnike i komentare iz https://jsonplaceholder.typicode.com/
+Napravi komponentu PreviousValuesList koja:
 
-Zahteva:
-1. Pristaviti podatke (posts, users, comments) sa API-ja koristeći useEffect
-2. Prikazati postove kao Instagram feed sa:
-   - Informacijama o korisniku koji je objavio post
-   - Naslovom i sadržajem posta
-   - 3 komentara po postu (na početku)
-   - Dugme "Load More Comments" koje prikazuje više komentara
-3. Klikom na korisnika, navigacija na njegov profil gde se prikazuje:
-   - Detalji korisnika (ime, email, telefon, adresa, kompanija)
-   - Svi postovi tog korisnika
-4. Implementirati cleanup funkcije:
-   - Cleanup za fetch podatke (otkazivanje API poziva ako dođe do promene)
-   - Cleanup za event listenere ako ih koristiš
+Ima <input> polje za unos teksta.
+Prikazuje trenutnu vrednost (kao u primeru sa časa).
+Prikazuje listu prethodnih vrednosti koje su unete do sada.
+Koristi useRef da pamti te prethodne vrednosti (ne useState!).
 
-Tehnički zahtevi:
-- Koristi useState za upravljanje stanjem (posts, users, comments, loading, error)
-- Koristi useEffect za fetchovanje podataka
-- Implementiraj cleanup funkcije gde je potrebno
-- Dodaj loading state i error handling
-- Stilizuj slično Instagram-u (kao primer koji smo radili)
+Smernice:
 
-Bonus:
-- Dodaj "Back to Feed" dugme koje vraća na glavni feed
-- Implementiraj pretragu postova po sadržaju
-- Dodaj dark/light mode temu
+Napravi const previousValues = useRef([]);
 
-Primer strukture komponenti:
-- App.jsx (glavna navigacija)
-- PostFeed.jsx (prikaz svih postova)
-- PostCard.jsx (jedan post sa komentarima)
-- UserProfile.jsx (profil korisnika)
+Kad se vrednost promeni (u useEffect), dodaj je u niz:
+previousValues.current.push(value);
+
+Prikaži sve prethodne vrednosti u <ul> listi.
+
+Napomena: Komponenta treba da se renderuje samo kada se promeni trenutni value (ne kada dodaješ u ref listu).
+💡 Bonus ideja:
+Prikaži i koliko puta je korisnik promenio unos (previousValues.current.length).
+
+
+Zadatak:
+
+Napravi komponentu AdvancedTimer koja ima sledeće funkcionalnosti:
+Dugme Start – pokreće odbrojavanje sekundi.
+Dugme Stop – zaustavlja tajmer.
+Dugme Reset – postavlja tajmer na 0.
+Dugme Lap – pamti trenutnu vrednost tajmeclra (kao “krug” u štoperici).
+
+Ispod prikaži listu svih “lap” vrednosti.
+
+
+Smernice:
+
+Koristi useState za prikaz sekundi.
+
+Koristi useRef da čuva:
+
+intervalRef – ID intervala.
+lapsRef – niz svih vremena kada je pritisnuto “Lap”.
+
+Kad korisnik klikne “Lap”, dodaj trenutni broj sekundi u lapsRef.current.
+
+
+Bitno:
+
+Nemoj koristiti useState za laps, već samo useRef.
+Samo sekunde (state) treba da izazivaju re-render.
+
+💡 Bonus ideje:
+Ograniči broj lap vrednosti (npr. max 5).
+Dodaj prikaz “Najbrži krug” (najmanja razlika između dva laps-a).
+Dodaj automatski stop na 60 sekundi.
+
+
+Šta bi se desilo da si koristila useState umesto useRef?
+Zašto useRef ne izaziva ponovno renderovanje?
+Kada bi bilo ispravno koristiti useState, a kada useRef?
+Šta useRef čuva kada se komponenta ponovo renderuje?
+
+
 
