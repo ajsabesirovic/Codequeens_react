@@ -37,3 +37,19 @@ Koristi useEffect(() => { ... }, []) za učitavanje iz localStorage pri mountova
 
 Indikator statusa
 — prikazuj tekst: “Saving...” dok je interval aktivan, a “Saved” kada se završi.
+
+
+
+----------------------------------useMemo domaci---------------------------------------
+
+Napravi komponentu koja ima niz brojeva i dugme koje dodaje novi broj u niz.
+Izračunaj maksimalni broj u nizu koristeći useMemo.
+Proveri da li se računanje ponavlja svaki put kad se doda novi broj i objasni zašto.
+
+Napravi komponentu koja ima input polje za unos teksta i prikazuje broj slova u tekstu.
+Funkcija za brojanje neka bude "teška" (koristi petlju da simulira računanje).
+Koristi useMemo da se brojanje ne ponavlja svaki put dok kucaš ako se vrednost nije promenila.
+
+Napravi komponentu koja računa kvadrat broja pomoću funkcije square(n), ali pomoću useMemo optimizuj da se ponovo računa samo kada se broj promeni.
+
+Eksperimentiši sa greškom — postavi pogrešan dependency array u useMemo (npr. [other] umesto [count]) i posmatraj kako se expensiveValue ne ažurira kad bi trebalo.
