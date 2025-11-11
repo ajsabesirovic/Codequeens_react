@@ -1,55 +1,13 @@
-Napraviti mini aplikaciju za pisanje beleški u kojoj se:
-beleška unosi u textarea
-svaka promena automatski čuva (simulira “auto-save” efekat)
-prikazuje vreme poslednjeg čuvanja
-koristi useRef za kontrolu intervala auto-save sistema
 
-Tehnički opis:
+Napravi komponentu gde korisnik unosi novi zadatak u input i dodaje ga na listu.
+Funkcija addTask treba da bude memoizovana pomoću useCallback.
+Zatim napravi child komponentu TaskList koja prikazuje sve zadatke.
+Uporedi ponašanje liste sa i bez useCallback.
 
-Korisnik upisuje tekst u polje.
-Aplikacija svake 3 sekunde automatski čuva tekst i ispisuje poruku:
-Sačuvano u 14:23:05
+Napravi jednostavan tajmer koji broji sekunde.
+Dugmad “Start” i “Stop” se nalaze u odvojenim child komponentama.
+Koristi useCallback za startTimer i stopTimer funkcije kako bi child komponente bile optimizovane.
 
-Ako korisnik prekine kucanje, auto-save treba da stane.
-Ponovo počinje kada korisnik opet kuca.
-
-Koristite:
-
-useState:
-za cuvanje trenutnog teksta (note)
-i vreme poslednjeg čuvanja (lastSaved)
-
-useEffect
-da posmatra promene u tekstu i da pokreće/zaustavlja auto-save mehanizam
-
-useRef
-da čuva ID intervala (setInterval) kako bi se mogao kontrolisati bez rerendera
-da spreči više aktivnih intervala istovremeno
-
-+
-Dodajte dugme “Save now”
-— da korisnik može sam ručno da sačuva u bilo kom trenutku.
-Ručni klik bi obrisao trenutni interval i sačuvao odmah
-
-Čuvanje u localStorage
-— neka se poslednja beleška pamti i pojavi kada se stranica ponovo učita.
-Koristi useEffect(() => { ... }, []) za učitavanje iz localStorage pri mountovanju.
-
-Indikator statusa
-— prikazuj tekst: “Saving...” dok je interval aktivan, a “Saved” kada se završi.
-
-
-
-----------------------------------useMemo domaci---------------------------------------
-
-Napravi komponentu koja ima niz brojeva i dugme koje dodaje novi broj u niz.
-Izračunaj maksimalni broj u nizu koristeći useMemo.
-Proveri da li se računanje ponavlja svaki put kad se doda novi broj i objasni zašto.
-
-Napravi komponentu koja ima input polje za unos teksta i prikazuje broj slova u tekstu.
-Funkcija za brojanje neka bude "teška" (koristi petlju da simulira računanje).
-Koristi useMemo da se brojanje ne ponavlja svaki put dok kucaš ako se vrednost nije promenila.
-
-Napravi komponentu koja računa kvadrat broja pomoću funkcije square(n), ali pomoću useMemo optimizuj da se ponovo računa samo kada se broj promeni.
-
-Eksperimentiši sa greškom — postavi pogrešan dependency array u useMemo (npr. [other] umesto [count]) i posmatraj kako se expensiveValue ne ažurira kad bi trebalo.
+Napravi niz proizvoda sa kategorijama (npr. “Food”, “Clothes”, “Tech”).
+Koristi dugmad za filtriranje proizvoda po kategoriji.
+Funkcija filterByCategory treba da bude memoizovana pomoću useCallback.
