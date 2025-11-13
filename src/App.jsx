@@ -1,47 +1,39 @@
-import { useState, useMemo, useCallback } from "react";
-import UserList from "./UserList";
-import Parent from "./Parent";
+import React, { useState, useCallback } from "react";
 
-// Lista korisnika – statički definisana izvan komponente App.
-// Pošto se ne menja, ne izaziva re-render komponente.
-const users = [
-  { id: 1, name: "Ajsa" },
-  { id: 2, name: "Sumeja" },
-  { id: 3, name: "Esma" },
-  { id: 4, name: "Mirela" },
-];
+const TaskList = React.memo(({ tasks }) => {
+  console.log("TaskList rendered");
+  return (
+    <ul>
+      {tasks.map((task, index) => (
+        <li key={index}>{task}</li>
+      ))}
+    </ul>
+  );
+});
 
-function App() {
-  // query čuva tekst koji korisnik unese u input polje (pretraga)
-  const [query, setQuery] = useState("");
+export default function App() {
+  console.log("App rendered");
 
-  // useMemo se koristi da izračunavanje (filter funkcija) ne bi bilo
-  // ponovo izvršeno svaki put kad se komponenta renderuje,
-  // već samo kad se promeni "query".
-  const filteredUsers = useMemo(() => {
-    // Filtrira korisnike koji sadrže tekst iz "query" (ne razlikuje velika/mala slova)
-    return users.filter((u) =>
-      u.name.toLowerCase().includes(query.toLowerCase())
-    );
-  }, [query]);
-  // ← useMemo će ponovo izračunati filteredUsers SAMO ako se promeni query
+  const [tasks, setTasks] = useState([]);
+  const [input, setInput] = useState("");
 
-  // useCallback vraća memoizovanu verziju funkcije handleChange
-  // To znači da će referenca na funkciju ostati ista između rendera,
-  // osim ako se ne promeni nešto u dependency nizu (ovde nema ničega)
-  // Ovo sprečava nepotrebne re-render-e child komponenti koje primaju ovu funkciju kao prop
-  const handleChange = useCallback((e) => {
-    setQuery(e.target.value); // ažurira query kad korisnik piše u input
-  }, []);
+  const addTask = useCallback(() => {
+    if (input.trim()) {
+      setTasks((prev) => [...prev, input]);
+      setInput("");
+    }
+  }, [input]);
+
   return (
     <div>
-      {/* <Parent /> 
-      Probajte prvo samo Parent da returnate i to bez ikakvih
-      funkcija i state-ova u App komponenti, a onda pogledajte ispod*/}
-      <input placeholder="Search..." value={query} onChange={handleChange} />
-      <UserList users={filteredUsers} />
+      <h2>To-Do List</h2>
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Add task"
+      />
+      <button onClick={addTask}>Add</button>
+      <TaskList tasks={tasks} />
     </div>
   );
 }
-
-export default App;
