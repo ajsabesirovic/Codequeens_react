@@ -1,13 +1,3 @@
-
-Napravi komponentu gde korisnik unosi novi zadatak u input i dodaje ga na listu.
-Funkcija addTask treba da bude memoizovana pomoću useCallback.
-Zatim napravi child komponentu TaskList koja prikazuje sve zadatke.
-Uporedi ponašanje liste sa i bez useCallback.
-
-Napravi jednostavan tajmer koji broji sekunde.
-Dugmad “Start” i “Stop” se nalaze u odvojenim child komponentama.
-Koristi useCallback za startTimer i stopTimer funkcije kako bi child komponente bile optimizovane.
-
-Napravi niz proizvoda sa kategorijama (npr. “Food”, “Clothes”, “Tech”).
-Koristi dugmad za filtriranje proizvoda po kategoriji.
-Funkcija filterByCategory treba da bude memoizovana pomoću useCallback.
+Stilizujte linkove tako da se vidi aktivna stranica (promenjena boja ili stil).
+Napravite Blog – neka prikaže listu najmanje tri članka (naslov + kratak opis). 
+Nije potrebno da članci vode na posebne stranice.
