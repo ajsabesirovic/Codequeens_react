@@ -1,39 +1,36 @@
-import React, { useState, useCallback } from "react";
-
-const TaskList = React.memo(({ tasks }) => {
-  console.log("TaskList rendered");
-  return (
-    <ul>
-      {tasks.map((task, index) => (
-        <li key={index}>{task}</li>
-      ))}
-    </ul>
-  );
-});
+// Importujemo osnovne komponente za routing iz react-router-dom
+// BrowserRouter - omotava aplikaciju i omogućava korišćenje routing funkcionalnosti
+// Routes - grupiše sve definisane rute
+// Route - definiše pojedinačnu rutu (putanja + komponenta)
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 export default function App() {
-  console.log("App rendered");
-
-  const [tasks, setTasks] = useState([]);
-  const [input, setInput] = useState("");
-
-  const addTask = useCallback(() => {
-    if (input.trim()) {
-      setTasks((prev) => [...prev, input]);
-      setInput("");
-    }
-  }, [input]);
-
   return (
-    <div>
-      <h2>To-Do List</h2>
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Add task"
-      />
-      <button onClick={addTask}>Add</button>
-      <TaskList tasks={tasks} />
+    <div className="app-container">
+      {/* BrowserRouter mora da wrappuje sve Link-ove i Routes */}
+      <BrowserRouter>
+        {/* Header je van Routes, znači prikazuje se na svakoj stranici */}
+        <Header />
+
+        {/* Definišemo sve rute, path oznacava putanju, element komponentu koja treba da se prikaze */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+
+          {/* Wildcard ruta (*) hvata sve nepostojeće putanje */}
+          <Route path="*" element={<h2>Not Found</h2>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
+
+// SPA (Single Page Application)
+// React Router omogućava navigaciju između stranica bez reload-a cele stranice
+// Znači Header ostaje isti dok se menja sadržaj ispod (<Routes>)
