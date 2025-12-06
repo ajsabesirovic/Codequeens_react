@@ -1,17 +1,17 @@
 // Outlet - React Router komponenta koja renderuje child rute
 // Kada imamo nested routes (ugnježđene rute), Outlet je mesto gde se child komponente prikazuju
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 /**
  * ProtectedRoute - Komponenta za zaštitu ruta
- * 
+ *
  * Ova komponenta proverava da li je korisnik autentifikovan pre nego što mu dozvoli pristup.
- * 
+ *
  * Kako radi:
  * 1. Proverava localStorage da li postoji "isAuthenticated" token
  * 2. Ako postoji → renderuje <Outlet /> koji prikazuje child rute (zaštićene stranice)
  * 3. Ako ne postoji → prikazuje poruku o grešci
- * 
+ *
  * Primer korišćenja:
  * - U App.jsx, sve rute unutar <Route path="/posts" element={<ProtectedRoute />}> su zaštićene
  * - Kada korisnik pokuša da pristupi "/posts", prvo se proverava autentifikacija
@@ -28,7 +28,8 @@ const ProtectedRoute = () => {
     // Na primer, ako je URL "/posts/123", Outlet će prikazati komponentu za tu rutu
     <Outlet />
   ) : (
-    <p>Ne mozete pristupiti ovoj stranici</p>
+    <Navigate to="/login" replace={true} />
+    // <p>Ne mozete pristupiti ovoj stranici</p>
   );
 };
 
