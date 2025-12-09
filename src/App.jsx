@@ -1,6 +1,7 @@
 import Alert from "./components/Alert";
 import { Layout } from "./components/Layout";
 import { ThemeProvider } from "./context/ThemeContext";
+import { AuthProvider } from "./context/AuthContext";
 
 /**
  * App - Glavna komponenta aplikacije
@@ -24,30 +25,28 @@ import { ThemeProvider } from "./context/ThemeContext";
  * bez potrebe da ih prosleđujemo kroz props.
  */
 const App = () => {
-  // Primer: simulacija statusa prijave (u praksi bi ovo dolazilo iz AuthContext-a)
-  const isLoggedIn = true;
-
+  /**
+   * AuthProvider i ThemeProvider obavijaju aplikaciju:
+   * - AuthProvider nudi user/isAuthenticated/login/logout svim child komponentama
+   * - ThemeProvider nudi theme/themeToggle svim child komponentama
+   *
+   * Redosled: AuthProvider spolja (da bi npr. Header imao pristup i auth i temi).
+   */
   return (
-    /**
-     * ThemeProvider - Provider komponenta koja obezbeđuje theme podatke
-     * 
-     * Sve komponente unutar ThemeProvider-a (Layout, Alert, itd.) mogu koristiti
-     * useContext(ThemeContext) da pristupe theme i themeToggle podacima.
-     * 
-     * Napomena: AuthProvider je uklonjen jer još nije kreiran.
-     * Studenti će ga kreirati kao deo domaćeg zadatka.
-     */
-    <ThemeProvider>
-      {/* 
-        Layout komponenta prima nekiProp i children.
-        children je Alert komponenta koja se prikazuje unutar Layout-a.
-      */}
-      <Layout nekiProp={isLoggedIn}>
-        <Alert type="success">
-          <p>Uspesno ste se ulogovali.</p>
-        </Alert>
-      </Layout>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider>
+        {/* 
+          Layout komponenta prima nekiProp i children.
+          children je Alert komponenta koja se prikazuje unutar Layout-a.
+          nekiProp više nije simulacija login-a; pravi status dolazi iz AuthContext-a (unutar Header-a).
+        */}
+        <Layout nekiProp={true}>
+          <Alert type="success">
+            <p>Uspesno ste se ulogovali.</p>
+          </Alert>
+        </Layout>
+      </ThemeProvider>
+    </AuthProvider>
   );
 };
 
