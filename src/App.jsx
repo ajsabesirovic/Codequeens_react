@@ -2,6 +2,8 @@ import Alert from "./components/Alert";
 import { Layout } from "./components/Layout";
 import { ThemeProvider } from "./context/ThemeContext";
 import { AuthProvider } from "./context/AuthContext";
+import TodoApp from "./TodoApp";
+import Counter from "./Counter";
 
 /**
  * App - Glavna komponenta aplikacije
@@ -33,21 +35,26 @@ const App = () => {
    * Redosled: AuthProvider spolja (da bi npr. Header imao pristup i auth i temi).
    */
   return (
-    <AuthProvider>
-      <ThemeProvider>
-        {/* 
-          Layout komponenta prima nekiProp i children.
-          children je Alert komponenta koja se prikazuje unutar Layout-a.
-          nekiProp više nije simulacija login-a; pravi status dolazi iz AuthContext-a (unutar Header-a).
-        */}
-        <Layout nekiProp={true}>
-          <Alert type="success">
-            <p>Uspesno ste se ulogovali.</p>
-          </Alert>
-        </Layout>
-      </ThemeProvider>
-    </AuthProvider>
-  );
+    // <AuthProvider>
+    //   <ThemeProvider>
+    //     {/* 
+    //       Layout komponenta prima nekiProp i children.
+    //       children je Alert komponenta koja se prikazuje unutar Layout-a.
+    //       nekiProp više nije simulacija login-a; pravi status dolazi iz AuthContext-a (unutar Header-a).
+    //     */}
+    //     <Layout nekiProp={true}>
+    //       <Alert type="success">
+    //         <p>Uspesno ste se ulogovali.</p>
+    //       </Alert>
+    //     </Layout>
+    //   </ThemeProvider>
+    // </AuthProvider>
+    <>
+    <TodoApp />
+    <Counter />
+
+      </>
+  );  
 };
 
 export default App;
