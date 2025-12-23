@@ -1,21 +1,22 @@
 import CartExample from "./components/CartExample";
 import { CartProvider } from "./context/CartContext";
+import UserProfile from "./instagram/UserProfile";
 
 /**
  * ====================================================================================
  * KOMPLETAN FLOW: useContext + useReducer kao Mini Global State Manager
  * ====================================================================================
- * 
+ *
  * OVAJ PRIMER POKAZUJE KAKO SE KOMBINUJU useContext I useReducer ZA GLOBAL STATE
- * 
+ *
  * ------------------
- * 
+ *
  * 1. App.jsx
  *    ↓
  *    - CartProvider obavija CartExample komponentu
  *    - CartProvider je komponenta iz CartContext.jsx koja kreira Context i upravlja state-om
  *    - Sve komponente unutar CartProvider-a mogu pristupiti cart state-u
- * 
+ *
  * 2. CartContext.jsx
  *    ↓
  *    - Kreira se CartContext (createContext)
@@ -26,7 +27,7 @@ import { CartProvider } from "./context/CartContext";
  *      * Računa totalCount i totalPrice iz state.items
  *      * Prosleđuje sve to kroz Context.Provider value prop
  *    - useCart hook omogućava komponentama da pristupe Context-u
- * 
+ *
  * 3. CartExample.jsx
  *    ↓
  *    - Koristi useCart() hook da pristupi state-u i funkcijama
@@ -35,10 +36,10 @@ import { CartProvider } from "./context/CartContext";
  *    - addItem šalje dispatch({ type: "ADD_ITEM", payload: product })
  *    - Reducer obrađuje akciju i vraća novi state
  *    - React automatski re-renderuje komponentu sa novim state-om
- * 
+ *
  * DETALJAN TOK KADA KORISNIK KLIKNE "Add" DUGME:
  * ----------------------------------------------
- * 
+ *
  * 1. Korisnik klikne "Add" na proizvodu u CartExample.jsx
  *    ↓
  * 2. Poziva se onClick={() => addItem(product)}
@@ -66,14 +67,14 @@ import { CartProvider } from "./context/CartContext";
  * 11. CartExample komponenta se re-renderuje jer je dobila novi value iz Context-a
  *     ↓
  * 12. UI se ažurira - korisnik vidi novi proizvod u korpi!
- * 
+ *
  * ZAŠTO OVA KOMBINACIJA (useContext + useReducer)?
  * ------------------------------------------------
- * 
+ *
  * - useReducer: Centralizovana logika za promene state-a (sve akcije na jednom mestu)
  * - useContext: Globalni pristup state-u bez prop drilling-a
  * - Rezultat: Mini Redux-like state management bez dodatnih biblioteka!
- * 
+ *
  * PREDNOSTI:
  * ----------
  * - State je globalno dostupan svim komponentama unutar Provider-a
@@ -84,17 +85,13 @@ import { CartProvider } from "./context/CartContext";
 const App = () => {
   /**
    * CartProvider obavija CartExample komponentu.
-   * 
+   *
    * Ovo znači da CartExample (i sve njene child komponente) mogu koristiti
    * useCart() hook da pristupe cart state-u i funkcijama.
-   * 
+   *
    * BEZ Provider-a, useCart() bi bacio grešku jer ne bi našao Context!
    */
-  return (
-    <CartProvider>
-      <CartExample />
-    </CartProvider>
-  );
+  return <UserProfile userId={1} />;
 };
 
 export default App;

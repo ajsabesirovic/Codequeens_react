@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import PostCard from "./PostCard";
+import axiosInstance from "../api";
 
 const PostFeed = ({ onUserClick }) => {
   const [posts, setPosts] = useState([]);
@@ -13,25 +14,15 @@ const PostFeed = ({ onUserClick }) => {
       try {
         setLoading(true);
 
-        const [postsResponse, usersResponse, commentsResponse] =
-          await Promise.all([
-            fetch("https://jsonplaceholder.typicode.com/posts"),
-            fetch("https://jsonplaceholder.typicode.com/users"),
-            fetch("https://jsonplaceholder.typicode.com/comments"),
-          ]);
+        const [postsData, usersData, commentsData] = await Promise.all([
+          axiosInstance.get("/posts"),
+          axiosInstance.get("/users"),
+          axiosInstance.get("/comments"),
+        ]);
 
-        if (!postsResponse.ok || !usersResponse.ok || !commentsResponse.ok) {
-          throw new Error("Failed to fetch data");
-        }
-
-        const postsData = await postsResponse.json();
-        const usersData = await usersResponse.json();
-        const commentsData = await commentsResponse.json();
-        console.log(postsData, usersData, commentsData);
-
-        setPosts(postsData);
-        setUsers(usersData);
-        setComments(commentsData);
+        setPosts(postsData.data);
+        setUsers(usersData.data);
+        setComments(commentsData.data);
       } catch (err) {
         setError(err.message);
         console.error("Error fetching data:", err);

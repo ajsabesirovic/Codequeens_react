@@ -1,0 +1,165 @@
+Svi projekti ce imati autentikaciju sa localStorage-om ili sessionStorage-om (Zavisi od vrste projekta).
+Svi projekti ce imati osnovnu strukturu sa navigacijom i stranicama koje su navedene ispod i dodatne stranice (po izboru).
+Svi projekti ce pratiti najbolje prakse, kao u pisanju koda, tako i u organizaciji foldera i komponenti, itd...
+
+Krajni rok za zavrsetak je 20. januara 2026.
+
+
+1. Esma — Aplikacija za učenje jezika
+
+Naziv: LanguageLearner
+
+Opis:
+Aplikacija za učenje stranih jezika. Korisnik bira jezik (npr. engleski, nemački, turski), pregledava lekcije po temama i rešava kviz na kraju svake lekcije.
+
+Struktura:
+	•	/languages
+	•	/languages/:languageId
+	•	/languages/:languageId/lessons/:lessonId
+	•	/practice
+	•	/favorites
+	•	/profile
+
+⸻
+
+2. Snežana — Studentski portal
+
+Naziv: StudentConnect
+
+Opis:
+Web aplikacija za organizaciju studentskog života: raspored predavanja, domaći zadaci, obaveštenja i forum.
+
+Struktura:
+	•	/schedule
+	•	/homeworks
+	•	/homeworks/:homeworkId
+	•	/forum
+	•	/forum/:topicId
+	•	/notifications
+	•	/profile/settings
+
+⸻
+
+3. Hana — Aplikacija za recepte
+
+Naziv: CookMaster
+
+Opis:
+Aplikacija za pregled, filtriranje i čuvanje recepata, uz mogućnost dodavanja sopstvenih recepata.
+
+Struktura:
+	•	/recipes
+	•	/recipes/category/:categoryName
+	•	/recipes/:recipeId
+	•	/add-recipe
+	•	/favorites
+	•	/my-recipes
+	•	/profile/edit
+
+⸻
+
+4. Ajla — Aplikacija za vežbanje i fitnes
+
+Naziv: FitTrack
+
+Opis:
+Aplikacija za planiranje treninga, praćenje napretka i postavljanje ciljeva.
+
+Struktura:
+	•	/workouts
+	•	/workouts/category/:category
+	•	/workouts/:workoutId
+	•	/my-plan
+	•	/progress
+	•	/goals
+	•	/add-workout
+
+⸻
+
+5. Dalila — Film baza sa ocenjivanjem
+
+Naziv: MovieMania
+
+Opis:
+Aplikacija za pregled filmova, ocenjivanje i komentarisanje, uz listu za gledanje.
+
+Struktura:
+	•	/movies
+	•	/movies/genre/:genre
+	•	/movies/:movieId
+	•	/reviews
+	•	/top-rated
+	•	/watchlist
+	•	/profile/settings
+
+⸻
+
+6. Ismihana — Turistički vodič kroz grad
+
+Naziv: CityGuide
+
+Opis:
+Interaktivni vodič kroz grad sa mapom, atrakcijama, događajima i ocenama korisnika.
+
+Struktura:
+	•	/places
+	•	/places/category/:category
+	•	/places/:placeId
+	•	/map
+	•	/add-place
+	•	/events
+	•	/my-visits
+
+⸻
+
+7. Sumeja Z — E-commerce demo sa korpom
+
+Naziv: ShopEasy
+
+Opis:
+Demo online prodavnice sa proizvodima, korpom i checkout procesom.
+
+Struktura:
+	•	/products
+	•	/products/category/:category
+	•	/products/:productId
+	•	/cart
+	•	/checkout
+	•	/orders
+	•	/admin/products (opciono)
+
+⸻
+
+8. Sumeja I — Blog platforma
+
+Naziv: MyBlog
+
+Opis:
+Višekorisnička blog platforma sa postovima, komentarima i korisničkim profilima.
+
+Struktura:
+	•	/posts
+	•	/posts/tag/:tag
+	•	/posts/:postId
+	•	/users/:userId
+	•	/new-post
+	•	/my-posts
+	•	/drafts
+
+⸻
+
+9. Mirela — Aplikacija za mentalno zdravlje i wellbeing
+
+Naziv: MindBalance
+
+Opis:
+Aplikacija za praćenje raspoloženja, navika i opšteg wellbeing-a, sa jednostavnom analizom i uvidima.
+
+Struktura:
+	•	/dashboard
+	•	/mood-tracker
+	•	/habits
+	•	/habits/:habitId
+	•	/insights
+	•	/reminders (opciono)
+	•	/profile/settings

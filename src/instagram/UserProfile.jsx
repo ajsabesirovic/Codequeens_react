@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
+import axiosInstance from "../api";
 
 const UserProfile = ({ userId }) => {
   const [user, setUser] = useState(null);
-  const [userPosts, setUserPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -13,20 +13,8 @@ const UserProfile = ({ userId }) => {
       try {
         setLoading(true);
 
-        const [userResponse, postsResponse] = await Promise.all([
-          fetch(`https://jsonplaceholder.typicode.com/users/${userId}`),
-          fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`),
-        ]);
-
-        if (!userResponse.ok || !postsResponse.ok) {
-          throw new Error("Failed to fetch user data");
-        }
-
-        const userData = await userResponse.json();
-        const postsData = await postsResponse.json();
-
-        setUser(userData);
-        setUserPosts(postsData);
+        const userData = await axiosInstance.get(`/users/${userId}`);
+        setUser(userData.data);
       } catch (err) {
         setError(err.message);
         console.error("Error fetching user data:", err);
@@ -109,7 +97,7 @@ const UserProfile = ({ userId }) => {
         </p>
       </div>
 
-      <div className="user-posts">
+      {/* <div className="user-posts">
         <h2>
           Posts by {user.name} ({userPosts.length})
         </h2>
@@ -121,7 +109,7 @@ const UserProfile = ({ userId }) => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
